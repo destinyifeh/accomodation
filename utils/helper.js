@@ -1,4 +1,4 @@
-export const loginDate = () => {
+export const today = () => {
   var date = new Date();
   return date;
 };
