@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "roboto";
+  background: ghostwhite;
 }
 
 a {
@@ -13,4 +13,476 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.card-top {
+  background: linear-gradient(to right,
+      rgba(45, 41, 38, 0.658),
+      rgba(45, 41, 38, 0.658)),
+    url("/images/dhouse9.jpg");
+  min-height: 75vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.typed {
+  text-align: center;
+}
+
+select {
+  width: 20vw;
+  border-radius: 10px;
+}
+
+#searchBtn {
+  min-width: 15vw !important;
+  border-radius: 10px;
+  background: #e94b3cff;
+}
+
+.building {
+  background: black !important;
+  padding: 10px;
+  opacity: 0.5;
+  border-radius: 50%;
+  font-weight: bold;
+  width: 100px;
+  margin: auto;
+}
+
+.building h5 {
+  color: white;
+  text-align: center !important;
+}
+
+.sales {
+  padding: 10px;
+  border-bottom: 2px solid #e94b3cff;
+}
+
+.rent {
+  padding: 10px;
+  border-bottom: 2px solid #e94b3cff;
+}
+
+#h1 {
+  font-size: 2em;
+}
+
+#h2 {
+  font-size: 1.5em;
+}
+
+#h3 {
+  font-size: 1.17em;
+}
+
+#h4 {
+  font-size: 1em;
+}
+
+#h5 {
+  font-size: 0.83em;
+}
+
+#h6 {
+  font-size: 0.67em;
+}
+
+.fa-check {
+  color: #e94b3cff;
+  font-weight: bold;
+}
+
+.contact-link {
+  background: #e94b3cff;
+  color: white;
+  padding: 10px;
+}
+
+.p-link {
+  margin-top: 4em;
+}
+
+.info h2 {
+  color: #2d2926ff;
+}
+
+.info h2:hover {
+  border-bottom: 1px solid #e94b3cff;
+}
+
+.agent-pic {
+  background: #2d2926ff;
+  border-radius: 50%;
+}
+
+.agent-status {
+  color: #2d2926ff;
+  font-weight: bold;
+}
+
+.agents-card {
+  background: #fff;
+  padding: 15px;
+  box-shadow: 0px 2px 2px grey;
+  border-radius: 10px;
+}
+
+.stars {
+  color: #e94b3cff;
+}
+
+.fa-star {
+  padding: 2px;
+  margin-top: 10px;
+}
+
+.posts h2 {
+  color: #2d2926ff;
+}
+
+.posts h2:hover {
+  border-bottom: 1px solid #e94b3cff;
+}
+
+.post-pic {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.posts-card {
+  background: white;
+
+  box-shadow: 0px 2px 2px grey;
+  border-radius: 10px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.text-top1 {
+  position: absolute;
+  top: 10px;
+  color: #e94b3cff;
+}
+
+.text-top2 {
+  position: absolute;
+  top: 20px;
+  color: #e94b3cff;
+}
+
+.text-1 {
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  color: #ffff;
+  background: blue;
+  min-width: 10px;
+  padding: 0px 3px 0px 3px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.text-2 {
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  right: 0;
+  color: #ffff;
+  background: #e94b3cff;
+  min-width: 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+  padding: 0px 3px 0px 3px;
+}
+
+.text-3 {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  padding: 5px;
+  color: #ffff;
+  background: #2d2926ff;
+  opacity: 0.6;
+}
+
+.text-4 {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  right: 0;
+  padding: 5px;
+  color: #ffff;
+  font-weight: bold;
+}
+
+.naira {
+  color: #e94b3cff;
+  font-weight: bold;
+}
+
+.time {
+  color: #2d2926ff;
+}
+
+.carousel-p {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  z-index: 1;
+  color: #ffff;
+  background: #e94b3cff;
+  font-weight: bold;
+  padding: 0px 5px 0px 5px;
+  border-radius: 5px;
+}
+
+.ad {
+  max-height: 160px;
+  width: 728px;
+  padding: 10px;
+  /* background: #e94b3c; */
+  border-radius: 5px;
+  /* background: linear-gradient(to right, #f2a65a, #772f1a); */
+  border: 1px solid gainsboro;
+  background: linear-gradient(to right, #e94b3c, #2d2926ff);
+}
+
+.ad2 {
+  max-height: 350px;
+  width: 250px !important;
+  padding: 10px;
+  background: linear-gradient(to right, #d7816a, #bd4f6c);
+
+  z-index: 2;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.ad-btn {
+  font-weight: bold;
+  animation: blinker 2s linear infinite;
+  background: #ffff;
+  box-shadow: 0px 2px 2px grey;
+  border-radius: 10px;
+}
+
+.meet {
+  animation: blinker 2s linear infinite;
+  cursor: pointer;
+}
+
+.contact h2,
+.sub h2 {
+  background: #e94b3cff;
+  padding: 8px;
+  color: white;
+}
+
+.company-info h2:hover {
+  text-decoration: underline #e94b3cff;
+}
+
+.loader-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.loader-text {
+  position: absolute;
+  top: 42%;
+  left: 43%;
+}
+
+.loader-load {
+  background: #e94b3cff;
+  height: 100vh;
+  border-radius: 10px;
+}
+
+#searchForm select {
+  background: ghostwhite;
+}
+
+.login-form input,
+select {
+  background: ghostwhite;
+}
+
+.login-form select {
+  background: ghostwhite;
+}
+
+.share-btn i {
+  font-size: 1.2em;
+  color: #e94b3cff;
+}
+
+input,
+select,
+textarea:focus {
+  border: 1px solid gainsboro !important;
+  box-shadow: 0 0 0 rgb(255, 255, 255) !important;
+}
+
+textarea,
+input,
+select {
+  border: 1px solid gainsboro !important;
+  color: black !important;
+}
+
+.agent-dash {
+  background-color: #e94b3cff;
+  padding: 10px;
+  min-height: 35vh;
+  color: white;
+  margin-right: 5px;
+}
+
+.add-form {
+  background-color: #2d2926ff;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  border: 1px solid #e94b3cff;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: #2d2926ff;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: #e94b3cff;
+}
+
+.exp:hover {
+  background-color: #e94b3c !important;
+}
+
+.contact-form {
+  width: 50% !important;
+}
+
+.contact-section {
+  background-color: #e94b3c !important;
+  min-height: 50vh !important;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 2px grey;
+
+}
+
+.current-text {
+  border-bottom: 2px solid #e94b3cff;
+
+}
+
+.show-page {
+  background-color: #e94b3cff;
+  border-radius: 10px;
+}
+
+
+
+
+
+/* Ipads and tablet screen sizes*/
+
+@media screen and (max-width: 768px) {
+  .building {
+    background: black !important;
+    padding: 10px;
+    opacity: 0.5;
+    border-radius: 50%;
+    font-weight: bold;
+    width: 100px;
+    margin: auto;
+  }
+
+  .contact-form {
+    width: 100% !important;
+  }
+
+  .contact-form input {
+    border-radius: 10px !important;
+  }
+
+
+  .loader-text {
+    position: absolute;
+    top: 42% !important;
+    left: 38% !important;
+
+  }
+
+  .agent-dash {
+    margin-right: 0;
+  }
+
+}
+
+
+
+/*Small screen laptop sizes*/
+
+@media screen and (max-width:1024px) {
+  .loader-text {
+    position: absolute;
+    top: 42% !important;
+    left: 36% !important;
+
+  }
+
+  .show-page {
+    background-color: #e94b3cff;
+    width: 80% !important;
+
+  }
+
+  .add-form,
+  .agent-dash {
+    min-height: 100vh !important;
+  }
+
+
+}
+
+/*Mobile screen sizes*/
+
+@media screen and (max-width:480px) {
+
+  .loader-text {
+    position: absolute;
+    top: 42% !important;
+    left: 19% !important;
+
+  }
+
+  .agent-dash {
+    margin-right: 0;
+  }
+
 }

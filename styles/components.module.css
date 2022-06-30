@@ -1,0 +1,38 @@
+#navigation a {
+  padding: 10px;
+  color: white;
+}
+
+#navigation a:hover {
+  color: #e94b3cff;
+  text-decoration: underline;
+}
+
+#header {
+  background: #2d2926ff;
+  color: white;
+}
+
+.logo {
+  color: #e94b3cff;
+}
+
+#mobile a {
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+#mobile {
+  background: #e94b3cff;
+  padding: 10px;
+  min-width: 10vw;
+  float: left;
+  position: absolute;
+  z-index: 2;
+  color: white;
+}
+
+#mobile a:hover {
+  color: #2d2926ff;
+}
