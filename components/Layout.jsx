@@ -4,6 +4,7 @@ import LoadingBar from "react-top-loading-bar";
 import Header from "./Header";
 import { setPath, getPath, pathname } from "../services/requesters";
 import { currentPage } from "../utils/constants";
+import { addMinute } from "../utils/helper";
 
 export default function Layout({ children }) {
   const ref = useRef(null);
@@ -20,6 +21,12 @@ export default function Layout({ children }) {
       setPath(currentPage, path);
     }
     console.log("des", getPath(currentPage));
+  }, []);
+  useEffect(() => {
+    var dt = new Date();
+    var later = dt.setHours(dt.getHours() + 3);
+    console.log("min", later);
+    console.log("today", addMinute());
   }, []);
   return (
     <>
