@@ -10,7 +10,7 @@ Accomodation is a place where those in search for property to rent or buy get co
 - Registration Form
 - Login Form
 - Share Button
-  -Subscription Form
+- Subscription Form
 - And many more
 
 ## Stacks used
