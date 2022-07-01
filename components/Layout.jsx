@@ -23,11 +23,9 @@ export default function Layout({ children }) {
     console.log("des", getPath(currentPage));
   }, []);
   useEffect(() => {
-    var dt = new Date();
-    var later = dt.setHours(dt.getHours() + 3);
-    console.log("min", later);
     console.log("today", addMinute());
   }, []);
+
   return (
     <>
       <Head>
