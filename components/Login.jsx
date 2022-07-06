@@ -72,7 +72,7 @@ const Login = (props) => {
           Agent Login Form
         </h4>
         <form className="p-2 login-form">
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               Email
             </h5>

@@ -59,7 +59,7 @@ const Register = (props) => {
           Agent Registration Form
         </h4>
         <form className="p-2 login-form">
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               First Name
             </h5>
@@ -69,7 +69,7 @@ const Register = (props) => {
               name="firstname"
             />
           </div>
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               Last Name
             </h5>
@@ -80,7 +80,7 @@ const Register = (props) => {
             />
           </div>
 
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               Date of Birth
             </h5>
@@ -90,7 +90,7 @@ const Register = (props) => {
               name="dob"
             />
           </div>
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               Residential State
             </h5>
@@ -103,7 +103,7 @@ const Register = (props) => {
             </select>
           </div>
 
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               Gender
             </h5>
@@ -113,7 +113,7 @@ const Register = (props) => {
             </select>
           </div>
 
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               Picture
             </h5>
@@ -124,7 +124,7 @@ const Register = (props) => {
             />
           </div>
 
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               Email
             </h5>
@@ -135,7 +135,7 @@ const Register = (props) => {
             />
           </div>
 
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               Password
             </h5>
@@ -146,7 +146,7 @@ const Register = (props) => {
             />
           </div>
 
-          <div className="">
+          <div className="my-3">
             <h5 id="h5" className="flex justify-left">
               Confirm Password
             </h5>
@@ -158,7 +158,7 @@ const Register = (props) => {
           </div>
 
           <div className="">
-            <button type="submit" className="w-full bg-black p-2 mt-3">
+            <button type="submit" className="w-full bg-black p-2 my-3">
               Submit
             </button>
           </div>

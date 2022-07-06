@@ -34,11 +34,12 @@ export default function Properties(props) {
   return (
     <>
       <Header2 />
-      <h2 className="text-center my-4" id="h2">
-        Recent Posts
-      </h2>
       {loader ? (
         <>
+          <h2 className="text-center my-4" id="h2">
+            Recent Posts
+          </h2>
+
           <section className=" container md:container mx-auto grid md:grid-cols-3 gap-4 p-3 multiple-posts">
             <article className="posts-card relative ">
               <p className="text-1">Sale</p>
@@ -423,7 +424,7 @@ export default function Properties(props) {
           </div>
         </>
       ) : (
-        <div className="" style={{ marginTop: "12%" }}>
+        <div className="more-loader">
           <Loading />
         </div>
       )}

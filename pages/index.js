@@ -493,7 +493,7 @@ export default function Home() {
 
           <Posts />
 
-          <div className="mt-8 text-center">
+          {/* <div className="mt-8 text-center">
             <Link href="/properties">
               <h5
                 className="text-center exp p-3"
@@ -503,7 +503,7 @@ export default function Home() {
                   color: "#ffff",
                   cursor: "pointer",
                   backgroundColor: "#2d2926ff",
-                  width: "fit-content",
+                  width: "50%",
                   margin: "auto",
                   boxShadow: "0px 2px 2px grey",
                   borderRadius: "10px",
@@ -512,7 +512,7 @@ export default function Home() {
                 Explore more <i className="fa fa-arrows-h"></i>
               </h5>
             </Link>
-          </div>
+          </div> */}
 
           <section className="others">
             <div className=""></div>

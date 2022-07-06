@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
+
 import { Carousel } from "react-responsive-carousel";
 import Typeds from "../components/Typed";
 import user from "../public/images/new2.png";
 //import Loading from "../components/Loading";
-
 export default function Posts() {
   const [share, setShare] = useState(true);
   const [social, setSocial] = useState(false);
@@ -306,6 +307,26 @@ export default function Posts() {
               <p className="legend ">Property for sale in lagos</p>
             </div>
           </Carousel>
+          <div className="mt-8 text-center">
+            <Link href="/properties">
+              <h5
+                className="text-center exp p-3"
+                id="h5"
+                style={{
+                  fontSize: "1.3em",
+                  color: "#ffff",
+                  cursor: "pointer",
+                  backgroundColor: "#2d2926ff",
+                  width: "100%",
+                  margin: "6em auto",
+                  boxShadow: "0px 2px 2px grey",
+                  borderRadius: "10px",
+                }}
+              >
+                Explore more <i className="fa fa-arrows-h"></i>
+              </h5>
+            </Link>
+          </div>
         </div>
       </section>
     </>
