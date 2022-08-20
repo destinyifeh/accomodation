@@ -14,6 +14,9 @@ const MobileNav = () => {
         <Link href="/properties" className="">
           Properties
         </Link>
+        <Link href="/agents" className="">
+          Agents
+        </Link>
       </div>
     </>
   );

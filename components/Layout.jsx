@@ -2,9 +2,17 @@ import Head from "next/head";
 import { useRef, useEffect } from "react";
 import LoadingBar from "react-top-loading-bar";
 import Header from "./Header";
-import { setPath, getPath, pathname } from "../services/requesters";
-import { currentPage } from "../utils/constants";
-import { addMinute } from "../utils/helper";
+import {
+  setPath,
+  getPath,
+  currentUser,
+  getToken,
+  getSession,
+} from "../services/requesters";
+import { currentPage, currentAgent, token, session } from "../utils/constants";
+import { currentTime } from "../utils/helper";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Layout({ children }) {
   const ref = useRef(null);
@@ -14,16 +22,17 @@ export default function Layout({ children }) {
     setTimeout(() => {
       ref.current.complete();
     }, 6000);
-
-    let path = window.location.pathname;
-    console.log(path);
-    if (path) {
-      setPath(currentPage, path);
-    }
-    console.log("des", getPath(currentPage));
   }, []);
   useEffect(() => {
-    console.log("today", addMinute());
+    console.log(currentUser(currentAgent), "i got");
+    console.log(getToken(token), "i token");
+    console.log(JSON.parse(localStorage.getItem("session")), "session");
+    const dato = new Date().getTime();
+    console.log(dato, "the time");
+    console.log(currentTime(), "cur");
+
+    const expireAt = getSession(session);
+    console.log("expreAt", expireAt);
   }, []);
 
   return (
@@ -46,6 +55,10 @@ export default function Layout({ children }) {
       <div>
         <LoadingBar color="black" ref={ref} />
       </div>
+      <ToastContainer
+        className="text-center"
+        position="top-center"
+      ></ToastContainer>
       {children}
     </>
   );

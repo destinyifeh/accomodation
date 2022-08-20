@@ -12,8 +12,10 @@ const Ad2 = () => {
         >
           <p>Lets connect you</p>
           <p>Are you ready?</p>
-          <Link href="/">
-            <p className="meet">Meet an agent</p>
+          <Link href="/agents">
+            <a>
+              <p className="meet">Meet an agent</p>
+            </a>
           </Link>
         </div>
         <div className="">
