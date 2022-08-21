@@ -7,8 +7,7 @@ import { sendForgotCode } from "../../services/agents/api";
 import { getAgents } from "../../services/agents/api";
 import { resetPasswordPage } from "../../services/requesters";
 
-const Resetcode = ({ agents }) => {
-  console.log("agents reset code", agents);
+const Resetcode = () => {
   const router = useRouter();
   const style = {
     padding: "15px",
@@ -21,6 +20,21 @@ const Resetcode = ({ agents }) => {
 
   const [resetPasswordToken, setResetPasswordToken] = useState("");
   const [submitting, setSubmitting] = useState(false);
+
+  const [agents, setAgents] = useState([]);
+  async function sendRequestAgent() {
+    try {
+      const { data } = await getAgents;
+      const agents = data;
+      setAgents(agents);
+      console.log("agentshow", agents);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    sendRequestAgent();
+  }, []);
   async function handleSubmit(e) {
     try {
       e.preventDefault();
@@ -144,18 +158,18 @@ const Resetcode = ({ agents }) => {
   );
 };
 
-export default Resetcode;
+// export default Resetcode;
 
-export async function getStaticProps() {
-  try {
-    const { data } = await getAgents;
+// export async function getStaticProps() {
+//   try {
+//     const { data } = await getAgents;
 
-    return {
-      props: {
-        agents: data,
-      },
-    };
-  } catch (err) {
-    console.log(err);
-  }
-}
+//     return {
+//       props: {
+//         agents: data,
+//       },
+//     };
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }

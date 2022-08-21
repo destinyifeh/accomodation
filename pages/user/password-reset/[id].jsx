@@ -7,10 +7,9 @@ import Header from "../../../components/Header2";
 import { sendReset, getAgent, getAgents } from "../../../services/agents/api";
 import { saveUser, saveToken } from "../../../services/requesters";
 import { currentAgent, token } from "../../../utils/constants";
-const PasswordReset = ({ agent }) => {
-  console.log("The agent", agent);
+const PasswordReset = () => {
   const router = useRouter();
-
+  const { id } = router.query;
   const style = {
     padding: "15px",
     background: "#e94b3cff",
@@ -24,6 +23,21 @@ const PasswordReset = ({ agent }) => {
   const [password2, setPassword2] = useState("");
 
   const [submitting, setSubmitting] = useState(false);
+  const [agent, setAgent] = useState("");
+  async function sendRequestAgent() {
+    try {
+      const { data } = await getAgent(id);
+      const agent = data;
+      setAgent(agent);
+      console.log("agent", agent);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    sendRequestAgent();
+  }, []);
+
   async function handleSubmit(e) {
     e.preventDefault();
     setSubmitting(true);
@@ -158,18 +172,18 @@ export default PasswordReset;
         }
 } */
 
-export const getServerSideProps = async (context) => {
-  try {
-    const id = context.params.id;
-    console.log("idi", id);
-    const res = await getAgent(id);
-    const agent = res.data;
-    console.log("agent", agent);
+// export const getServerSideProps = async (context) => {
+//   try {
+//     const id = context.params.id;
+//     console.log("idi", id);
+//     const res = await getAgent(id);
+//     const agent = res.data;
+//     console.log("agent", agent);
 
-    return {
-      props: { agent: agent },
-    };
-  } catch (err) {
-    console.log(err);
-  }
-};
+//     return {
+//       props: { agent: agent },
+//     };
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
