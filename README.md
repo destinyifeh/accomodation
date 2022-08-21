@@ -17,7 +17,6 @@ Accomodation is a place where those in search for property to rent or buy get co
 
 - Next js
 - React
-- Redux
 - Node js
 - MongoDB
 - Tailwindcss

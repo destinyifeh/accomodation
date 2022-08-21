@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: "roboto";
   background: ghostwhite;
+
 }
 
 a {
@@ -13,6 +14,7 @@ a {
 
 * {
   box-sizing: border-box;
+
 }
 
 .card-top {
@@ -20,13 +22,14 @@ a {
       rgba(45, 41, 38, 0.658),
       rgba(45, 41, 38, 0.658)),
     url("/images/dhouse9.jpg");
-  min-height: 75vh;
+  height: auto;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   padding: 10px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  /* border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px; */
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%); */
 }
 
 .typed {
@@ -249,7 +252,7 @@ select {
 }
 
 .ad {
-  max-height: 160px;
+  height: 160px;
   width: 728px;
   padding: 10px;
   /* background: #e94b3c; */
@@ -257,7 +260,10 @@ select {
   /* background: linear-gradient(to right, #f2a65a, #772f1a); */
   border: 1px solid gainsboro;
   background: linear-gradient(to right, #e94b3c, #2d2926ff);
+  /* text-align: center; */
 }
+
+
 
 .ad2 {
   max-height: 350px;
@@ -378,9 +384,9 @@ select {
   background-color: #e94b3cff;
 }
 
-.exp:hover {
+/* .exp:hover {
   background-color: #e94b3c !important;
-}
+} */
 
 .contact-form {
   width: 50% !important;
@@ -406,8 +412,19 @@ select {
 }
 
 
+.more-loader {
+  margin-top: 20%;
+}
 
+.filebase-file input[type="file"] {
+  padding: 5px;
+  border-radius: 7px;
 
+}
+
+.prop-loader {
+  margin-top: 40vh;
+}
 
 /* Ipads and tablet screen sizes*/
 
@@ -440,6 +457,10 @@ select {
 
   .agent-dash {
     margin-right: 0;
+  }
+
+  .more-loader {
+    margin-top: 25%;
   }
 
 }

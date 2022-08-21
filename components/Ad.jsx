@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
 
 const Ad = () => {
@@ -15,7 +16,7 @@ const Ad = () => {
       > */}
       <section className="ad flex  mx-auto my-4 flex justify-even" style={{}}>
         <div className="">
-          <p className="text-white">
+          <p className="text-white ad-text">
             Are you looking for a property to buy or rent? Worry no more you can
             now get your affordable villa, apartments, offices, luxuries, and
             other properties right here
@@ -24,9 +25,11 @@ const Ad = () => {
             
             with an agent now, because yes now, get it all for free{" "}
           </p> */}
-          <button className="text-black p-2 block mx-auto mt-5 ad-btn">
-            <span className="bbt">Explore all available properties now!</span>
-          </button>
+          <a href="/properties">
+            <button className="text-black p-2 block mx-auto my-5 ad-btn">
+              <span className="bbt">Explore all available properties now!</span>
+            </button>
+          </a>
         </div>
 
         <div className="relative">

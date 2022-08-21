@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import { DotPulse } from "@uiball/loaders";
 import Header from "../../components/Header2";
+import { sendForgotCode } from "../../services/agents/api";
+import { getAgents } from "../../services/agents/api";
+import { resetPasswordPage } from "../../services/requesters";
 
-const Resetcode = (props) => {
+const Resetcode = ({ agents }) => {
+  console.log("agents reset code", agents);
+  const router = useRouter();
   const style = {
     padding: "15px",
     background: "#e94b3cff",
@@ -11,6 +19,68 @@ const Resetcode = (props) => {
     borderRadius: "10px",
   };
 
+  const [resetPasswordToken, setResetPasswordToken] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  async function handleSubmit(e) {
+    try {
+      e.preventDefault();
+      const theCode = {
+        resetPasswordToken: resetPasswordToken,
+      };
+      console.log("theCode", theCode);
+      setSubmitting(true);
+
+      const checkCode = await agents?.map((agent) => agent.resetPasswordToken);
+      if (!resetPasswordToken || resetPasswordToken === " ") {
+        console.log("Enter reset code");
+        toast.info("Enter reset code");
+        setSubmitting(false);
+
+        return false;
+      } else if (resetPasswordToken.length !== 6) {
+        console.log("Reset code must be 6 characters");
+        toast.info("Reset code must be 6 characters");
+        setSubmitting(false);
+
+        return false;
+      } else if (checkCode.includes(resetPasswordToken)) {
+        sendForgotCode(theCode)
+          .then((res) => {
+            console.log(res.data, "Reset code data");
+            if (
+              res.data === " Password reset token is invalid or has expired"
+            ) {
+              console.log("Password reset token is invalid or has expired");
+              toast.info("Password reset token is invalid or has expired");
+            } else {
+              toast.success("Password reset token is valid ");
+
+              //router.push(`${resetPasswordPage}/${res.data._id}`);
+              window.location.href = `${resetPasswordPage}/${res.data._id}`;
+            }
+
+            setSubmitting(false);
+          })
+          .catch((err) => {
+            console.log(err);
+            setSubmitting(false);
+            toast.error("Oops! An error occurred");
+          });
+        return true;
+      } else {
+        console.log("Password reset token is invalid or has expired");
+        toast.info("Password reset token is invalid sor has expired");
+        setSubmitting(false);
+
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        "Oops! An error occurred, make sure your network is working fine"
+      );
+    }
+  }
   return (
     <>
       <Header />
@@ -18,7 +88,7 @@ const Resetcode = (props) => {
         <h4 className="text-center" id="h4">
           Enter Password Reset Code
         </h4>
-        <form className="p-2 login-form">
+        <form className="p-2 login-form" onSubmit={handleSubmit}>
           <div className="">
             <h5 id="h5" className="flex justify-left">
               Code
@@ -27,12 +97,27 @@ const Resetcode = (props) => {
               className="w-full rounded-lg text-black"
               type="text"
               name="reset-code"
+              value={resetPasswordToken}
+              onChange={(e) => setResetPasswordToken(e.target.value)}
             />
           </div>
 
           <div className="">
-            <button type="submit" className="w-full bg-black p-2 mt-3">
-              Proceed
+            <button
+              type="submit"
+              className="w-full  p-2 mt-3"
+              style={
+                submitting ? { background: "#3a3b3c" } : { background: "black" }
+              }
+              disabled={submitting}
+            >
+              {submitting ? (
+                <div className=" flex justify-center">
+                  <DotPulse size={40} speed={1.3} color="white" />
+                </div>
+              ) : (
+                "Proceed"
+              )}
             </button>
           </div>
         </form>
@@ -60,3 +145,17 @@ const Resetcode = (props) => {
 };
 
 export default Resetcode;
+
+export async function getStaticProps() {
+  try {
+    const { data } = await getAgents;
+
+    return {
+      props: {
+        agents: data,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+  }
+}

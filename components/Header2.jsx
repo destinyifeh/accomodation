@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import ForgotPassword from "./ForgotPassword";
 import MobileNav from "./MobileNav";
 import styles from "../styles/components.module.css";
-
+import { currentAgent } from "../utils/constants";
+import { currentUser } from "../services/requesters";
+import {
+  logoutCurrentAgent,
+  sessionExpires,
+  removeToken,
+} from "../services/requesters";
 export default function Header2(props) {
   const [user, setUser] = useState(true);
   const [user2, setUser2] = useState(false);
@@ -15,6 +22,11 @@ export default function Header2(props) {
   const [register2, setRegister2] = useState(false);
   const [forgot2, setForgot2] = useState(false);
   const [current, setCurrent] = useState("");
+  const [logoutUser, setLogoutUser] = useState(false);
+  useEffect(() => {
+    const user = currentUser(currentAgent);
+    setCurrent(user);
+  }, []);
 
   const handleShow2 = () => {
     setShow2(false);
@@ -33,6 +45,14 @@ export default function Header2(props) {
     //setUser2(true);
   };
 
+  const handleLogout = (currentAgent) => {
+    console.log(currentAgent);
+    removeToken();
+    logoutCurrentAgent();
+    sessionExpires();
+    toast.success("Logged out");
+    window.location.reload();
+  };
   const style = {
     fontWeight: "bold",
     fontSize: "1.2em",
@@ -61,29 +81,70 @@ export default function Header2(props) {
           translate="no"
           onClick={() => (window.location.href = "/")}
         >
-          Accomo<span className={styles.logo}>dation</span>
+          Accommo<span className={styles.logo}>dation</span>
         </span>
         <div className="hidden md:block" id={styles.navigation}>
-          <Link href="/">Home</Link>
-          <Link href="/about" className="">
+          <a className="" href="/">
+            Home
+          </a>
+          <a className="" href="/about">
             About
-          </Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/mission">Mission</Link>
-          <Link href="/vision">Vision</Link>
-          <Link href="/properties" className="">
+          </a>
+          <a className="" href="/contact">
+            Contact
+          </a>
+          <a className="" href="/mission">
+            Mission
+          </a>
+          <a className="" href="/vision">
+            Vision
+          </a>
+          <a className="" href="/properties">
             Properties
-          </Link>
+          </a>
+          <a href="/agents" className="">
+            Agents
+          </a>
+          <a className="" href="/agent/dashboard">
+            Agent Dashboard
+          </a>
         </div>
-
-        {login2 ? (
-          <i className="fa fa-user-circle" style={style}></i>
+        {current ? (
+          <>
+            <p
+              className="cursor-pointer"
+              onClick={() =>
+                handleLogout(
+                  currentUser(currentAgent) ? currentUser(currentAgent) : " "
+                )
+              }
+            >
+              Logout
+              <span
+                className=""
+                style={{
+                  color: "#e94b3cff",
+                  fontSize: "13px",
+                  marginLeft: "2px",
+                  cursor: "pointer",
+                }}
+              >
+                ({currentUser(currentAgent)?.firstName})
+              </span>
+            </p>
+          </>
         ) : (
-          <i
-            className="fa fa-user-circle"
-            style={style}
-            onClick={handleUser}
-          ></i>
+          <>
+            {login2 ? (
+              <i className="fa fa-user-circle" style={style}></i>
+            ) : (
+              <i
+                className="fa fa-user-circle"
+                style={style}
+                onClick={handleUser}
+              ></i>
+            )}
+          </>
         )}
       </header>
       <div className="ml-4 mt-3">{remove2 ? <MobileNav /> : ""}</div>
@@ -97,6 +158,8 @@ export default function Header2(props) {
             setLogin2={setLogin2}
             register2={register2}
             setRegister2={setRegister2}
+            setLogoutUser={setLogoutUser}
+            logoutUser={logoutUser}
           />
         ) : (
           " "
@@ -109,6 +172,8 @@ export default function Header2(props) {
             setLogin2={setLogin2}
             register2={register2}
             setRegister2={setRegister2}
+            setLogoutUser={setLogoutUser}
+            logoutUser={logoutUser}
           />
         ) : (
           " "

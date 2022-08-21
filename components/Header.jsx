@@ -1,9 +1,16 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 import LoadingBar from "react-top-loading-bar";
 import styles from "../styles/components.module.css";
-
+import { currentAgent } from "../utils/constants";
+import { currentUser } from "../services/requesters";
+import {
+  logoutCurrentAgent,
+  sessionExpires,
+  removeToken,
+} from "../services/requesters";
 export default function Header(props) {
   const [user, setUser] = useState(true);
   const [user2, setUser2] = useState(false);
@@ -44,6 +51,15 @@ export default function Header(props) {
     }, 6000);
   };
 
+  const handleLogout = (currentAgent) => {
+    console.log(currentAgent);
+    removeToken();
+    logoutCurrentAgent();
+    sessionExpires();
+    toast.success("Logged out");
+    window.location.reload();
+  };
+
   const style = {
     fontWeight: "bold",
     fontSize: "1.2em",
@@ -75,40 +91,70 @@ export default function Header(props) {
           translate="no"
           onClick={() => (window.location.href = "/")}
         >
-          Accomo<span className={styles.logo}>dation</span>
+          Accommo<span className={styles.logo}>dation</span>
         </span>
         <div className="hidden md:block" id={styles.navigation}>
-          <Link className="" href="/">
+          <a className="" href="/" onClick={handleLoader}>
             Home
-          </Link>
-          <Link className="" href="/about">
+          </a>
+          <a className="" href="/about" onClick={handleLoader}>
             About
-          </Link>
-          <Link className="" href="/contact">
+          </a>
+          <a className="" href="/contact" onClick={handleLoader}>
             Contact
-          </Link>
-          <Link className="" href="/mission">
+          </a>
+          <a className="" href="/mission" onClick={handleLoader}>
             Mission
-          </Link>
-          <Link className="" href="/vision">
+          </a>
+          <a className="" href="/vision" onClick={handleLoader}>
             Vision
-          </Link>
-          <Link className="" href="/properties" onClick={handleLoader}>
+          </a>
+          <a className="" href="/properties" onClick={handleLoader}>
             Properties
-          </Link>
-          <Link className="" href="/properties/add">
-            Create
-          </Link>
+          </a>
+          <a href="/agents" className="" onClick={handleLoader}>
+            Agents
+          </a>
+          <a className="" href="/agent/dashboard" onClick={handleLoader}>
+            Agent Dashboard
+          </a>
         </div>
-
-        {login ? (
-          <i className="fa fa-user-circle" style={style}></i>
+        {currentUser(currentAgent) ? (
+          <>
+            <p
+              className="cursor-pointer"
+              onClick={() =>
+                handleLogout(
+                  currentUser(currentAgent) ? currentUser(currentAgent) : " "
+                )
+              }
+            >
+              Logout
+              <span
+                className=""
+                style={{
+                  color: "#e94b3cff",
+                  fontSize: "13px",
+                  marginLeft: "2px",
+                  cursor: "pointer",
+                }}
+              >
+                ({currentUser(currentAgent).firstName})
+              </span>
+            </p>
+          </>
         ) : (
-          <i
-            className="fa fa-user-circle"
-            style={style}
-            onClick={handleUser}
-          ></i>
+          <>
+            {login ? (
+              <i className="fa fa-user-circle" style={style}></i>
+            ) : (
+              <i
+                className="fa fa-user-circle"
+                style={style}
+                onClick={handleUser}
+              ></i>
+            )}
+          </>
         )}
       </header>
     </>
