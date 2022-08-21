@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { DotPulse } from "@uiball/loaders";
-import { useRouter } from "next/router";
 
 import Header from "../../../components/Header2";
 import { sendReset, getAgent, getAgents } from "../../../services/agents/api";
