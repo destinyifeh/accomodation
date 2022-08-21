@@ -5,9 +5,23 @@ import Header from "../components/Header2";
 import user from "../public/images/staff1.jpg";
 import { getAgents } from "../services/agents/api";
 import { getTheTime } from "../utils/formatters";
-export default function Agents({ agents }) {
-  console.log(agents, "ll agents");
+export default function Agents() {
+  const [agents, setAgents] = useState([]);
+  async function sendRequestAgent() {
+    try {
+      const { data } = await getAgents;
+      const agents = data;
+      setAgents(agents);
+      console.log("agentshow", agents);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    sendRequestAgent();
+  }, []);
 
+  console.log(agents, "ll agents");
   return (
     <>
       <Head>
@@ -73,12 +87,12 @@ export default function Agents({ agents }) {
   );
 }
 
-export async function getStaticProps() {
-  const { data } = await getAgents;
-  const agents = data;
-  return {
-    props: {
-      agents: agents,
-    },
-  };
-}
+// export async function getStaticProps() {
+//   const { data } = await getAgents;
+//   const agents = data;
+//   return {
+//     props: {
+//       agents: agents,
+//     },
+//   };
+// }

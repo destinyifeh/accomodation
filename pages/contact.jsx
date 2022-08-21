@@ -2,20 +2,9 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import { toast } from "react-toastify";
 import Header from "../components/Header2";
-import { getAgents } from "../services/agents/api";
+///import { getAgents } from "../services/agents/api";
 
-export async function getStaticProps() {
-  const { data } = await getAgents;
-  const agents = data;
-  return {
-    props: {
-      agents: agents,
-    },
-  };
-}
-
-export default function Contact({ agents }) {
-  console.log("contacts", agents);
+export default function Contact() {
   const [email, setEmail] = useState("");
   const [sender, setSender] = useState("");
   const [message, setMessage] = useState("");
