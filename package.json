@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build": "babel src -d lib",
-    "prebuild": "jest"
+    "build": "babel src -d lib yarn run test -o --watch",
+    "prebuild": "jest yarn run test -o --watch"
   },
   "dependencies": {
     "@fontsource/open-sans": "^4.5.10",
