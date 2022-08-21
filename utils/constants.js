@@ -1,4 +1,9 @@
 export const live = "production";
 export const dev = "development";
-export const currentUser = "current_user";
+export const currentAgent = "current_agent";
 export const currentPage = "current_page";
+export const production_url = "https://accomodation.herokuapp.com";
+export const local_url = "http://localhost:3000";
+export const theAgent = "agent";
+export const token = "token";
+export const session = "session";

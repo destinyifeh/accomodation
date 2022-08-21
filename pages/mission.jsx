@@ -4,9 +4,10 @@ export default function Mission() {
   return (
     <>
       <Head>
-        <title>Mission - Accomodation</title>
-        <meta name="url" content="http://localhost:3000/mission" />
+        <title>Mission - Accommodation</title>
+        <meta name="url" content="https://accomodation.vercel.app/mission" />
       </Head>
+
       <Header />
       <section className="container md:container mx-auto my-4 p-3">
         <h2 className="" id="h2">

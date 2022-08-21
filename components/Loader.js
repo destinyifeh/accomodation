@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <section className="loader-load">
       <h3 className="text-white text-center mx-auto loader-text" id="h3">
-        Welcome to accomodation
+        Welcome to accommodation
       </h3>
 
       <div className="loader-body flex justify-center mx-auto">

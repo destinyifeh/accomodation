@@ -5,7 +5,13 @@ import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 import Link from "next/link";
 import Typeds from "../components/Typed";
-import user from "../public/images/new2.png";
+import agent1 from "../public/images/staff1.jpg";
+import agent2 from "../public/images/staff5.jpg";
+import agent3 from "../public/images/staff3.jpg";
+import user1 from "../public/images/staff2.jpg";
+import user2 from "../public/images/staff4.jpg";
+import user3 from "../public/images/staff6.jpg";
+
 import Posts from "./home";
 import Footer from "../components/Footer";
 import Ad from "../components/Ad";
@@ -17,8 +23,10 @@ import MobileNav from "../components/MobileNav";
 import Register from "../components/Register";
 import Login from "../components/Login";
 import ForgotPassword from "../components/ForgotPassword";
-
-export default function Home() {
+import { getAgents } from "../services/agents/api";
+import { getProperties } from "../services/property/api";
+export default function Home({ agents }) {
+  console.log(agents, "agents");
   const [loading, setLoading] = useState(false);
   const [sales, setSales] = useState(true);
   const [rent, setRent] = useState(false);
@@ -27,6 +35,20 @@ export default function Home() {
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
   const [forgot, setForgot] = useState(false);
+  const [properties, setProperties] = useState("");
+  async function sendRequest() {
+    try {
+      const { data } = await getProperties();
+      const properties = data;
+      setProperties(properties);
+      console.log("prop", properties);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    sendRequest();
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -44,11 +66,25 @@ export default function Home() {
     setRent(false);
   };
 
+  const submitSearch = (e) => {
+    e.preventDefault();
+    if (rent === true) {
+      console.log("Rent is true");
+      window.location.href = "/properties/query/rent";
+    } else {
+      if (sales === true) {
+        console.log("Sale is true");
+        window.location.href = "/properties/query/sale";
+      }
+    }
+  };
+
   if (loading) {
     return (
       <>
         <Head>
-          <title>Home -Accomodation </title>
+          <title>Home - Accommodation</title>
+          <meta name="url" content="https://accomodation.vercel.app" />
         </Head>
 
         <Header
@@ -60,6 +96,7 @@ export default function Home() {
           login={login}
           setRegister={setRegister}
           register={register}
+          agents={agents}
         />
 
         <main className=" text-white text-center">
@@ -72,6 +109,7 @@ export default function Home() {
                 setRegister={setRegister}
                 forgot={forgot}
                 setForgot={setForgot}
+                agents={agents}
               />
             ) : (
               " "
@@ -84,6 +122,7 @@ export default function Home() {
                 register={register}
                 setRegister={setRegister}
                 setForgot={setForgot}
+                agents={agents}
               />
             ) : (
               " "
@@ -95,6 +134,7 @@ export default function Home() {
                 register={register}
                 setRegister={setRegister}
                 setForgot={setForgot}
+                agents={agents}
               />
             ) : (
               ""
@@ -108,7 +148,7 @@ export default function Home() {
             )}
             <Typeds />
             <h5 className="prose-headings prose-h1">
-              What accomodation are you looking for?{" "}
+              What accommodation are you looking for?{" "}
             </h5>
 
             <div className="flex justify-center">
@@ -125,7 +165,7 @@ export default function Home() {
                   style={{ cursor: "pointer" }}
                   onClick={handleSales}
                 >
-                  Sales
+                  Sale
                 </h5>
               )}
               {rent ? (
@@ -146,7 +186,10 @@ export default function Home() {
               )}
             </div>
             <div className=" " id="searchForm">
-              <form className="flex justify-center rounded p-3">
+              <form
+                className="flex justify-center rounded p-3"
+                onSubmit={submitSearch}
+              >
                 {sales ? (
                   <>
                     <div>
@@ -211,9 +254,7 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4 lg:flex lg:justify-around lg:gap-0 text-white my-4 ">
               <span
                 className="cursor-pointer"
-                onClick={() =>
-                  (window.location.href = "/properties/query/office-space")
-                }
+                onClick={() => (window.location.href = "/properties")}
               >
                 <div className="building">
                   <Image
@@ -230,9 +271,7 @@ export default function Home() {
 
               <span
                 className="cursor-pointer"
-                onClick={() =>
-                  (window.location.href = "/properties/query/homes")
-                }
+                onClick={() => (window.location.href = "/properties")}
               >
                 <div className="building">
                   <Image
@@ -248,9 +287,7 @@ export default function Home() {
 
               <span
                 className="cursor-pointer"
-                onClick={() =>
-                  (window.location.href = "/properties/query/villas")
-                }
+                onClick={() => (window.location.href = "/properties")}
               >
                 <div className="building">
                   <Image
@@ -265,9 +302,7 @@ export default function Home() {
               </span>
               <span
                 className="cursor-pointer"
-                onClick={() =>
-                  (window.location.href = "/properties/query/apartments")
-                }
+                onClick={() => (window.location.href = "/properties")}
               >
                 <div className="building">
                   <Image
@@ -286,10 +321,11 @@ export default function Home() {
         </main>
         <main className="hidden md:block">
           <Ad />
+
           <section className="info p-3 md:grid grid-cols-3 md:gap-4 container mx-auto my-2">
             <div className="p-2">
               <h2 id="h2" className=" font-bold my-3">
-                We connect our visitors who are in search for accomodation to
+                We connect our visitors who are in search for accommodation to
                 rent or properties to buy to the appropriate agents
               </h2>
               <p>
@@ -331,7 +367,7 @@ export default function Home() {
                   width={50}
                   height={50}
                   alt="agent pic"
-                  src={user}
+                  src={agent1}
                 />
                 <h3 className="font-bold mt-3" id="h3">
                   Nosa Omorodion
@@ -355,7 +391,7 @@ export default function Home() {
                   width={50}
                   height={50}
                   alt="agent pic"
-                  src={user}
+                  src={agent2}
                 />
                 <h3 className="font-bold mt-3" id="h3">
                   Rebecca Peterson
@@ -365,10 +401,8 @@ export default function Home() {
                 </h4>
                 <p className="mb-3">
                   {" "}
-                  International agent and project manager. Rebecca is a
-                  professional property agent with over ten years of experience
-                  in house agent, property manager, project management and many
-                  more{" "}
+                  Rebecca is professional property agent with over ten years of
+                  experience{" "}
                 </p>
                 <span className="stars text-blue-700 ">
                   Verified<i className="fa fa-check "></i>
@@ -381,7 +415,7 @@ export default function Home() {
                   width={50}
                   height={50}
                   alt="agent pic"
-                  src={user}
+                  src={agent3}
                 />
                 <h3 className="font-bold mt-3" id="h3">
                   Kunle Ariyo
@@ -392,7 +426,7 @@ export default function Home() {
                 <p className="mb-3">
                   Property agent based in lagos state, Nigeria. Kunle is a
                   experience house agent, Kunle is one of the most reliable and
-                  active agent on this platform, trusted by hundred of clients
+                  active agent on this platform
                 </p>
                 <span className="stars text-blue-700 ">
                   Verified<i className="fa fa-check "></i>
@@ -409,7 +443,7 @@ export default function Home() {
                   width={50}
                   height={50}
                   alt="agent pic"
-                  src={user}
+                  src={user1}
                 />
                 <h3 className="font-bold mt-3" id="h3">
                   Umaru Musa
@@ -419,8 +453,7 @@ export default function Home() {
                 </h4>
                 <p>
                   I got connected to an agent on this website and within a week
-                  i got myself a new home. All thanks to the people behind this
-                  platform called accomodation
+                  i got myself a new home. very grateful!
                 </p>
                 <span className="stars">
                   <i className="fa fa-star"></i>
@@ -437,7 +470,7 @@ export default function Home() {
                   width={50}
                   height={50}
                   alt="agent pic"
-                  src={user}
+                  src={user2}
                 />
                 <h3 className="font-bold mt-3" id="h3">
                   Tunde Ibrahim
@@ -464,7 +497,7 @@ export default function Home() {
                   width={50}
                   height={50}
                   alt="agent pic"
-                  src={user}
+                  src={user3}
                 />
                 <h3 className="font-bold mt-3" id="h3">
                   Chioma Uche
@@ -475,10 +508,7 @@ export default function Home() {
                 </h4>
                 <p>
                   I finally rented an apartment for myself through this site
-                  after months of searching for apartment here in lagos. Thanks
-                  to the management of this platform for creating an amazing
-                  site where people searching for accomodation to buy or rent
-                  can get connected to variety of available accomodations
+                  after months of searching for apartment here in lagos
                 </p>
                 <span className="stars">
                   <i className="fa fa-star"></i>
@@ -491,7 +521,7 @@ export default function Home() {
             </div>
           </section>
 
-          <Posts />
+          <Posts properties={properties} agents={agents} />
 
           {/* <div className="mt-8 text-center">
             <Link href="/properties">
@@ -529,4 +559,14 @@ export default function Home() {
       </>
     );
   }
+}
+
+export async function getStaticProps() {
+  const { data } = await getAgents;
+  const agents = data;
+  return {
+    props: {
+      agents: agents,
+    },
+  };
 }

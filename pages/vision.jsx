@@ -1,12 +1,13 @@
 import Head from "next/head";
-import Header from "../components/Header";
+import Header from "../components/Header2";
 export default function Vision() {
   return (
     <>
       <Head>
-        <title>Vision - Accomodation</title>
-        <meta name="url" content="http://localhost:3000/vision" />
+        <title>Vision - Accommodation</title>
+        <meta name="url" content="https://accomodation.vercel.app/vision" />
       </Head>
+
       <Header />
       <section className="container md:container mx-auto my-4 p-3">
         <h2 className="" id="h2">
