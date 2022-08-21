@@ -1,6 +1,6 @@
 ## About App
 
-This is a next js web app created from scratch by me. This app is called accomodation.
+This is a next js web app created from scratch by me. This app is called accommodation.
 
 Accomodation is a place where those in search for property to rent or buy get connected to the appropriate agents.
 
