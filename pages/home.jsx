@@ -8,12 +8,40 @@ import Typeds from "../components/Typed";
 import user from "../public/images/new2.png";
 import { minuteAgo } from "../utils/formatters";
 import { getProperties } from "../services/property/api";
-
-export default function Posts({ properties, agents }) {
+import { getAgents } from "../services/agents/api";
+export default function Posts() {
   console.log(properties, "properties, home");
   const [share, setShare] = useState(true);
   const [social, setSocial] = useState("");
   const [share2, setShare2] = useState(false);
+  const [agents, setAgents] = useState([]);
+  const [properties, setProperties] = useState([]);
+  async function sendRequestAgent() {
+    try {
+      const { data } = await getAgents;
+      const agents = data;
+      setAgents(agents);
+      console.log("agentshow", agents);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function sendRequest() {
+    try {
+      const { data } = await getProperties();
+      const properties = data;
+      setProperties(properties);
+      console.log("propShow", properties);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    sendRequestAgent();
+    sendRequest();
+  }, []);
 
   const handleShare = (id) => {
     console.log(id);
