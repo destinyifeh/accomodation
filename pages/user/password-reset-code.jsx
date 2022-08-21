@@ -7,7 +7,7 @@ import { sendForgotCode } from "../../services/agents/api";
 import { getAgents } from "../../services/agents/api";
 import { resetPasswordPage } from "../../services/requesters";
 
-export default function Resetcode() {
+const Resetcode = () => {
   const router = useRouter();
   const style = {
     padding: "15px",
@@ -156,9 +156,9 @@ export default function Resetcode() {
       </section>
     </>
   );
-}
+};
 
-// export default Resetcode;
+export default Resetcode;
 
 // export async function getStaticProps() {
 //   try {

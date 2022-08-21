@@ -21,7 +21,6 @@ export default function Agents() {
     sendRequestAgent();
   }, []);
 
-  console.log(agents, "ll agents");
   return (
     <>
       <Head>
