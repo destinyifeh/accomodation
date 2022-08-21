@@ -5,10 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "build": "babel src -d lib yarn run test -o --watch",
-    "prebuild": "jest yarn run test -o --watch"
+    "start": "next start -p $PORT",
+    "lint": "next lint"
   },
   "dependencies": {
     "@fontsource/open-sans": "^4.5.10",
