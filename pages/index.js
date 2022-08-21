@@ -25,7 +25,7 @@ import Login from "../components/Login";
 import ForgotPassword from "../components/ForgotPassword";
 import { getAgents } from "../services/agents/api";
 import { getProperties } from "../services/property/api";
-export default function Home({ agents }) {
+export default function Home() {
   console.log(agents, "agents");
   const [loading, setLoading] = useState(false);
   const [sales, setSales] = useState(true);
@@ -36,6 +36,8 @@ export default function Home({ agents }) {
   const [register, setRegister] = useState(false);
   const [forgot, setForgot] = useState(false);
   const [properties, setProperties] = useState("");
+  const [agents, setAgents] = useState([]);
+
   async function sendRequest() {
     try {
       const { data } = await getProperties();
@@ -46,8 +48,20 @@ export default function Home({ agents }) {
       console.log(error);
     }
   }
+
+  async function sendRequestAgent() {
+    try {
+      const { data } = await getAgents;
+      const agents = data;
+      setAgents(agents);
+      console.log("agentshow", agents);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
     sendRequest();
+    sendRequestAgent();
   }, []);
 
   useEffect(() => {
@@ -521,7 +535,7 @@ export default function Home({ agents }) {
             </div>
           </section>
 
-          <Posts properties={properties} agents={agents} />
+          <Posts />
 
           {/* <div className="mt-8 text-center">
             <Link href="/properties">
@@ -561,12 +575,12 @@ export default function Home({ agents }) {
   }
 }
 
-export async function getStaticProps() {
-  const { data } = await getAgents;
-  const agents = data;
-  return {
-    props: {
-      agents: agents,
-    },
-  };
-}
+// export async function getStaticProps() {
+//   const { data } = await getAgents;
+//   const agents = data;
+//   return {
+//     props: {
+//       agents: agents,
+//     },
+//   };
+// }
