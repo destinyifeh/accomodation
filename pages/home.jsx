@@ -10,7 +10,6 @@ import { minuteAgo } from "../utils/formatters";
 import { getProperties } from "../services/property/api";
 import { getAgents } from "../services/agents/api";
 export default function Posts() {
-  console.log(properties, "properties, home");
   const [share, setShare] = useState(true);
   const [social, setSocial] = useState("");
   const [share2, setShare2] = useState(false);
