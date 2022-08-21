@@ -26,7 +26,6 @@ import ForgotPassword from "../components/ForgotPassword";
 import { getAgents } from "../services/agents/api";
 import { getProperties } from "../services/property/api";
 export default function Home() {
-  console.log(agents, "agents");
   const [loading, setLoading] = useState(false);
   const [sales, setSales] = useState(true);
   const [rent, setRent] = useState(false);
